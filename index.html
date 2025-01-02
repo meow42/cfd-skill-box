@@ -22,7 +22,7 @@
                   <select name="race" id="rslect" v-model="race" @change="changeRace(race)" class="race-select">
                     <option key="a" value="a">{{ raceName['a'] }}</option>
                     <option key="t" value="t">{{ raceName['t'] }}</option>
-                    <!--<option key="s" value="s">{{ raceName['s'] }}</option>-->
+                    <option key="s" value="s">{{ raceName['s'] }}</option>
                   </select>
                   技能加点模拟工具</h2>
               </th>
@@ -316,7 +316,10 @@
               <skill id="s21">
                 <arrow need="s21" tar1="s22"></arrow>
               </skill>
-              <skill id="s22"></skill>
+              <skill id="s22">
+                <arrow need="s22" tar1="s61"></arrow>
+              </skill>
+              <skill id="s61"></skill>
             </div>
             <div>
               <skill id="s23">
@@ -365,7 +368,10 @@
               <skill id="s36">
                 <arrow need="s36" tar1="s37"></arrow>
               </skill>
-              <skill id="s37"></skill>
+              <skill id="s37">
+                <arrow need="s37" tar1="s62"></arrow>
+              </skill>
+              <skill id="s62"></skill>
             </div>
             <div>
               <skill id="s38">
@@ -414,7 +420,10 @@
               <skill id="s51">
                 <arrow need="s51" tar1="s52"></arrow>
               </skill>
-              <skill id="s52"></skill>
+              <skill id="s52">
+                <arrow need="s52" tar1="s63"></arrow>
+              </skill>
+              <skill id="s63"></skill>
             </div>
             <div>
               <skill id="s53">
@@ -437,6 +446,58 @@
                 <arrow need="s58" tar1="s59"></arrow>
               </skill>
               <skill id="s59"></skill>
+            </div>
+          </div>
+          <div class="page" v-show="activeTab === 4">
+            <div>
+              <skill id="s64">
+                <arrow need="s64" tar1="s65"></arrow>
+              </skill>
+              <skill id="s65">
+                <arrow need="s65" tar1="s66"></arrow>
+              </skill>
+              <skill id="s66">
+                <arrow need="s66" tar1="s67"></arrow>
+              </skill>
+              <skill id="s67">
+                <arrow need="s67" tar1="s68"></arrow>
+              </skill>
+              <skill id="s68"></skill>
+            </div>
+            <div>
+              <arrow need="s64" tar1="s69" type="right"></arrow>
+              <skill id="s69">
+                <arrow need="s69" tar1="s70"></arrow>
+              </skill>
+              <skill id="s70">
+                <arrow need="s70" tar1="s71"></arrow>
+              </skill>
+              <skill id="s71">
+                <arrow need="s71" tar1="s72"></arrow>
+              </skill>
+              <skill id="s72">
+                <arrow need="s72" tar1="s79"></arrow>
+              </skill>
+              <skill id="s79"></skill>
+            </div>
+            <div>
+              <skill id="s73">
+                <arrow need="s73" tar1="s74"></arrow>
+              </skill>
+              <skill id="s74">
+                <arrow need="s74" tar1="s75"></arrow>
+              </skill>
+              <skill id="s75">
+                <arrow need="s75" tar1="s76"></arrow>
+              </skill>
+              <skill id="s76"></skill>
+            </div>
+            <div>
+              <arrow need="s73" tar1="s77" type="right"></arrow>
+              <skill id="s77">
+                <arrow need="s77" tar1="s78"></arrow>
+              </skill>
+              <skill id="s78"></skill>
             </div>
           </div>
         </div>
@@ -726,6 +787,7 @@
             <skill id="s7"></skill>
             <skill id="s8"></skill>
             <skill id="s9"></skill>
+            <skill id="s60"></skill>
             <skill id="s10"></skill>
           </div>
           <div>
@@ -769,20 +831,32 @@
       <!-- 方案分享 -->
       <div id="bottom1">
         <div id="code_edit_frame">
-          <table>
+          <div style="font-size:12px;">
+            <div style="width: 96px; height: 54px; padding: 15px 0px 15px 8px; float: left; font-size: 16px; font-weight: bold; color: #860;">
+              注意事项
+            </div>
+            <div>
+              <p>1. 觉醒后涉及的技能等级上限未精准对应，目前是默认觉醒后技能全部+3，请自行对照。</p>
+              <p>2. 技能数据对应的是开服的55级版本，可能存在数据不匹配当前版本的问题。</p>
+              <p style="margin-top: 6px;">使用过程中发现BUG请在群里反馈给 @猫大海 ，感谢！
+                <a href="https://github.com/meow42/cfd-skill-box" target="_blank" style="margin-left: 260px;">[GitHub]</a>
+              </p>
+            </div>
+          </div>
+          <!--<table>
             <tbody>
               <tr>
                 <td>
                   <input id="getcode_btn" type="button" value=" 马上获得地址 " style="font-size:12px;" disabled>
-                  <span style="font-size:12px;">按下旁边的按钮即可马上获得你的加点页面</span><br />
+                  <span style="font-size:12px;">按下旁边的按钮即可马上获得你的加点页面（制作中...）</span><br />
                 </td>
               </tr>
               <tr>
-                <td><input type="text" size="80" maxlength="200" id="code_edit">
+                <td><input type="text" size="80" maxlength="250" id="code_edit">
                 </td>
               </tr>
             </tbody>
-          </table>
+          </table>-->
         </div>
       </div>
       <!-- 操作说明 -->
@@ -818,15 +892,19 @@
               <td class="rtd">显示技能详细介绍</td>
               <td style="font-size:12px;">不选择时，鼠标放在技能图片上不显示其详细资料</td>
             </tr>
-            <tr>
+            <!--<tr>
               <td class="rttd" style="font-size:12px;">“生成你的加点地址”按钮</td>
               <td style="font-size:12px;">
                 点击生成你的加点网址，复制该网址以后打开是本次加点的设置。<br>
                 可以将该网址发给你的朋友，让他们直接查看你的加点。<br>
               </td>
-            </tr>
+            </tr>-->
           </table>
         </div><!-- guide -->
+        <div style="margin: 25px 15px; float: right; font-size: 12px;">
+          <p>本加点模拟器基于日本网友的作品改编，感谢他的工作！</p>
+          <p>原作地址：<a href="https://www.e-douguya.com/tenvi/">https://www.e-douguya.com/tenvi/</a></p>
+        </div>
       </div>
     </div>
   </div>
