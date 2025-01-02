@@ -1,7 +1,7 @@
 <template>
   <div class="skill">
     <div
-      v-if="skill.type === 4"
+      v-if="skill.type === '觉醒'"
       @mouseenter="handelMouseenter"
       @mouseleave="handelMouseleave"
     >
@@ -9,7 +9,7 @@
         :style="skill.getIconStyle()"/>
     </div>
     <div
-      v-if="skill.type !== 4"
+      v-if="skill.type !== '觉醒'"
       :class="isEnable ? 'enable_box' : 'disable_box'"
       @click="handelClick"
       @contextmenu="handelRightClick"
@@ -49,11 +49,13 @@ module.exports = {
     },
   },
   watch: {
+    /* 此处监听不稳定，处于非激活状态的技能不生效
     // 监听父组件的觉醒状态
     "$root.sim_pc_wakeup"(newVal, oldVal) {
       this.skill.wup = (String(newVal).length > 2);
       //console.log(newVal, typeof newVal, newVal.length)
-    }
+    },
+    */
   },
   methods: {
     /** 监听左键点击 */

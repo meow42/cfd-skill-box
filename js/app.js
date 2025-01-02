@@ -95,28 +95,129 @@ SkillIconMap = {
     //"w19": "00046", //射击强化
     "w20": [0, 14], //加农大炮
   },
-  "s": {},
-  "t": {}
+  "t": {
+    "s1": [0, 6], //普通攻击
+    "s2": [1, 4], //打击
+    "s3": [11, 18], //制作生命水
+    "s4": [0, 4], //守护者召唤
+    "s5": [3, 6], //疾跑
+    "s6": [2, 6], //飞行
+    "s7": [4, 6], //飞行专精
+    "s8": [1, 6], //能量吸收
+    "s9": [1, 9], //节省连击点
+    "s10": [3, 5], //打击精通
+    "s11": [4, 5], //回避精通
+    "s12": [7, 5], //还击
+    "s57": [10, 18], //后撤步
+
+    "s13": [6, 4], //重刺
+    "s14": [5, 8], //流星击
+    "s15": [7, 4], //双重刺
+    "s16": [6, 8], //三重刺
+    "s17": [2, 9], //一闪
+    "s18": [12, 9], //剑刃之阵
+    "s19": [4, 4], //风之剑刃
+    "s20": [5, 4], //麻痹剑刃
+    "s21": [7, 8], //剑刃风暴
+    "s22": [1, 13], //六脉神剑
+    "s54": [0, 18], //红鹰之爪
+    "s23": [2, 4], //猛烈打击
+    "s24": [3, 4], //毁灭打击
+    "s25": [8, 8], //升龙击
+    "s26": [4, 1], //近战武器专精
+    "s27": [9, 4], //潜行
+    "s28": [10, 4], //伪装
+    "s29": [13, 9], //急速冲刺
+    "s30": [8, 4], //战斗祝福
+    "s31": [6, 5], //麻痹精通
+    "s32": [9, 5], //敏捷精通
+    "s33": [12, 2], //霸体祝福
+
+    "s34": [13, 4], //剧毒之伤
+    "s35": [9, 8], //毒伤
+    "s36": [1, 5], //毒爆
+    "s37": [14, 4], //暗影之伤
+    "s38": [10, 8], //毒云之伤
+    "s39": [11, 8], //暗影烈焰
+    "s40": [14, 9], //吸魔之伤
+    "s41": [11, 4], //施毒术
+    "s42": [12, 4], //黑暗病毒
+    "s43": [12, 8], //致命病毒
+    "s44": [2, 13], //幽灵病毒
+    "s55": [1, 18], //死神之镰
+    "s45": [13, 8], //预谋打击
+    "s46": [14, 8], //爆裂打击
+    "s47": [0, 9], //吸血打击
+    "s48": [5, 5], //魔法精通
+    "s49": [8, 5], //生命精通
+    "s50": [0, 5], //鲜血洪流
+    "s51": [12, 10], //炼金术
+    "s52": [2, 5], //法爆祝福
+    "s53": [10, 5], //黑暗领域
+
+    "s58": [0, 16], //切割
+    "s59": [6, 16], //音速攻击
+    "s60": [2, 16], //强力切割
+    "s61": [7, 16], //双重切割
+    "s62": [11, 16], //断头台
+    "s63": [15, 16], //秘技
+    "s64": [3, 16], //十字银翼
+    "s65": [8, 16], //银翼杀手
+    "s66": [12, 16], //闪光银翼
+    "s67": [16, 16], //回旋镖
+    "s56": [2, 18], //幻影攻击
+    "s68": [1, 16], //疾速刃
+    "s69": [4, 16], //嗜血
+    "s70": [9, 16], //黑暗披风
+    "s71": [13, 16], //抵抗
+    "s72": [5, 16], //防御姿态
+    "s73": [10, 16], //报复
+    "s74": [14, 16], //强化光环
+    "s75": [17, 16], //不朽光环
+
+    "w1": [0, 12], //近战集中
+    "w2": [1, 12], //掠夺
+    "w3": [4, 12], //短剑专精
+    "w4": [5, 12], //速刺
+    "w5": [8, 14], //刺杀强化
+    "w6": [9, 14], //快速一击
+    "w7": [6, 12], //利爪专精
+    "w8": [7, 12], //阿基里斯拳
+    //"w9": "20047", //刺杀强化
+    "w10": [10, 14], //迅猛利爪
+    "w11": [2, 12], //魔法集中
+    "w12": [3, 12], //黑暗光环
+    "w13": [8, 12], //全神贯注
+    "w14": [9, 12], //召唤百合花
+    "w15": [11, 14], //诅咒延伸
+    "w16": [12, 14], //百合花的重力球
+    "w17": [10, 12], //暗黑能量吸收
+    "w18": [11, 12], //黑暗仪式
+    //"w19": "20050", //诅咒延伸
+    "w20": [13, 14], //无尽痛苦
+  },
+  "s": {}
 }
 
 class SkillData {
-  id = ""; // 字符串ID
-  race = ""; // 种族 a s t
-  name = ""; // 名称
-  kind = ""; // 类型 A=主动 AG=角色主动 AP=守护者主动 P=被动
-  text = ""; // 介绍文本
-  needt = ""; // 需求的武器装备描述文本
-  n = []; // 每个等级的介绍文本
-  needs = ""; // 前置技能ID
-  needl = 0; // 需求前置技能等级
-  init = 0; // 初始点数
-  cost = 0; // 当前点数加值
-  max1 = 0; // 点数上限
-  max2 = 0;  // 觉醒后的上限
-  wup = false; // 是否觉醒
-  need = null; // 前置技能对象 SkillData
-  nexts = []; // 后置技能对象 SkillData
-  type = -1; // 种类 common skill1 skill2 skill3 wakeup
+  id = "";      // 字符串ID
+  race = "";    // 种族 a s t
+  name = "";    // 名称
+  kind = "";    // 类型 A=主动 AG=角色主动 AP=守护者主动 P=被动
+  text = "";    // 介绍文本
+  needt = "";   // 需求的武器装备描述文本
+  n = [];       // 每个等级的介绍文本
+  needs = "";   // 前置技能ID
+  needl = 0;    // 需求前置技能等级
+  init = 0;     // 初始点数
+  cost = 0;     // 当前点数加值
+  max1 = 0;     // 点数上限
+  max2 = 0;     // 觉醒后的上限
+  wup = false;  // 是否受到觉醒加成
+  wlv = 0;      // 觉醒层级（如果是觉醒技能）
+  need = null;  // 前置技能对象 SkillData
+  nexts = [];   // 后置技能对象 SkillData
+  type = "";    // 种类  共通 觉醒  攻击 射击 防御  火焰 冰霜 光电 自然  刺杀 诅咒 忍者
   getLeftPoint = () => { return 233; }; // 用于接收总剩余点数方法
   constructor(payload) {
     Object.assign(this, payload);
@@ -192,6 +293,10 @@ class SkillData {
     this.cost = _cost;
     this.setNextsCost();
   }
+  toNum(n) {
+    let _lv = Math.min(Math.max(n, 0), this.max)
+    this.add(_lv - this.lv)
+  }
   toMax() {
     this.add(this.max - this.lv);
     //this.cost = this.max - this.init;
@@ -243,7 +348,7 @@ var app = new Vue({
     race: 'a', // a s t
     raceName: { a: '人类', s: '龙人', t: '精灵' },
     g_wakeup_level: [0, 10, 30, 50, 70, 90, 110],
-    sim_pc_level: 55, // 选取的等级
+    sim_pc_level: 65, // 选取的等级
     sim_pc_wakeup: '0', // 选取的觉醒状态
     sim_have_point: 0, // 技能点总数
     activeTab: 1, // 当前选中的tab下标
@@ -259,16 +364,16 @@ var app = new Vue({
     wakeupList: [], // 觉醒技能列表
     wakeups: [ // 觉醒数据
       { id: '0', label: '未觉醒', skill: '', a: '', s: '', t: '' },
-      { id: '1', label: '1次觉醒', skill: 'w1,w2', a: '近战机体', s: '元素', t: '刺客' },
-      { id: '11', label: '┣2次觉醒', skill: 'w3,w4', a: '双手机体', s: '火法', t: '刀刺' },
-      { id: '111', label: '┃┗3次觉醒', skill: 'w5,w6', a: '战争机体', s: '火法', t: '刀刺' },
-      { id: '12', label: '┗2次觉醒', skill: 'w7,w8', a: '单手机体', s: '冰法', t: '爪刺' },
-      { id: '121', label: '\xa0\xa0┗3次觉醒', skill: 'w5,w10', a: '防御机体', s: '冰法', t: '爪刺' },
-      { id: '2', label: '1次觉醒', skill: 'w11,w12', a: '射击机体', s: '光法', t: '毒刺' },
-      { id: '21', label: '┣2次觉醒', skill: 'w13,w14', a: '迅捷机体', s: '光法', t: '召唤' },
-      { id: '211', label: '┃┗3次觉醒', skill: 'w15,w16', a: '狙击机体', s: '光法', t: '召唤' },
-      { id: '22', label: '┗2次觉醒', skill: 'w17,w18', a: '爆破机体', s: '牧师', t: '变身' },
-      { id: '221', label: '\xa0\xa0┗3次觉醒', skill: 'w15,w20', a: '大炮武器', s: '牧师', t: '变身' },
+      { id: '1', label: '1次觉醒', skill: 'w1,w2', a: '近战机体', s: '元素魔法师', t: '刺客' },
+      { id: '11', label: '┣2次觉醒', skill: 'w3,w4', a: '双手机体', s: '火焰法师', t: '迅捷刺客' },
+      { id: '111', label: '┃┗3次觉醒', skill: 'w5,w6', a: '战争机体', s: '火焰魔导士', t: '迅捷杀手' },
+      { id: '12', label: '┗2次觉醒', skill: 'w7,w8', a: '单手机体', s: '冰霜法师', t: '利爪刺客' },
+      { id: '121', label: '\xa0\xa0┗3次觉醒', skill: 'w5,w10', a: '防御机体', s: '冰霜魔导士', t: '利爪杀手' },
+      { id: '2', label: '1次觉醒', skill: 'w11,w12', a: '射击机体', s: '祈祷者', t: '诅咒者' },
+      { id: '21', label: '┣2次觉醒', skill: 'w13,w14', a: '迅捷机体', s: '神圣法师', t: '恶魔术士' },
+      { id: '211', label: '┃┗3次觉醒', skill: 'w15,w16', a: '狙击机体', s: '神圣召唤者', t: '通灵师' },
+      { id: '22', label: '┗2次觉醒', skill: 'w17,w18', a: '爆破机体', s: '牧师', t: '黑暗术士' },
+      { id: '221', label: '\xa0\xa0┗3次觉醒', skill: 'w15,w20', a: '大炮武器', s: '高阶祭司', t: '暗语师' },
     ],
   },
   computed: {
@@ -285,10 +390,16 @@ var app = new Vue({
     console.log('app.mounted() ', this);
   },
   watch: {
-    // 选择的等级低于当前时，重置加点
+    // 监控等级变化
     sim_pc_level: function (newValue, oldValue) {
+      // 选择的等级低于当前时，重置加点
       if (newValue < oldValue) this.resetSkillCost();
       this.resetPointParam();
+      this.updateSkillCost()
+    },
+    // 监控觉醒状态
+    sim_pc_wakeup: function (newValue, oldValue) {
+      this.updateSkillCost()
     }
   },
   methods: {
@@ -314,6 +425,28 @@ var app = new Vue({
     resetSkillCost() {
       this.skills.map(item => {
         item.cost = 0;
+      });
+    },
+    /** 更新技能点数 */
+    updateSkillCost() {
+      this.skills.map(item => {
+        // 觉醒导致的变更，暂时简单处理
+        if (this.sim_pc_wakeup.length > 2) {
+          item.wup = true
+        } 
+        else {
+          item.wup = false
+          if (item.max < item.lv) {
+            item.add(item.max - item.lv)
+          }
+        }
+        // 角色等级导致的觉醒技能变更
+        if (item.type === "觉醒") {
+          // 动态设置觉醒技能等级，规则：觉醒后角色每2级自动加1
+          let wakeupNeedLv = this.g_wakeup_level[item.wlv];
+          let lv = Math.ceil((this.sim_pc_level - wakeupNeedLv) / 2)
+          item.toNum(lv)
+        }
       });
     },
     /** 载入数据 */
@@ -342,7 +475,7 @@ var app = new Vue({
       let skills = [];
       let skillObj = {};
       let skillMap = new Map();
-      let type = -1; // 标记技能大类别序号
+      let type = ""; // 标记技能大类别序号
       for (let i = 0; i < t.length; i++) {
         //if ((t[i] === '') || (t[i].charAt(0) === '#')) continue; // 跳过空行和注释
         //if ((t[i].charAt(0) === '!')) continue; //!开头的行说明是新的种类翻页
@@ -350,7 +483,9 @@ var app = new Vue({
         let mark = t[i].charAt(0);
         if (['', '#', '.'].includes(mark)) continue;
         if (mark === '!') {
-          type = t[i].includes('!覚醒') ? 4 : type + 1;
+          type = t[i].replace('!', '').replace('\r', '')
+          //console.log(t[i], type)
+          //type = t[i].includes('!觉醒') ? 4 : type + 1;
           continue;
         }
         // 处理数据行
@@ -360,6 +495,17 @@ var app = new Vue({
           data.parse(c);
           data.race = this.race;
           data.type = type;
+          if (type === '觉醒') {
+            // 觉醒技能默认1级
+            data.add(1)
+            // 从觉醒数据中查询觉醒技能的层级
+            for (let i = 0; i < this.wakeups.length; i++) {
+              if (this.wakeups[i]['skill'].split(',').includes(c[0].substring(1))) {
+                data.wlv = this.wakeups[i]['id'].length;
+                break;
+              }
+            }
+          }
           data.getLeftPoint = this.getLeftPoint;
           skills.push(data);
           skillObj = data;
@@ -455,7 +601,7 @@ var app = new Vue({
     getUsedPoint() {
       let result = 0;
       this.skills.map(item => {
-        if (item.type === 'wup') return;
+        if (item.type === '觉醒') return;
         result += item.cost;
       });
       return result;
@@ -479,7 +625,7 @@ var app = new Vue({
     },
     /** 技能点重置 */
     handelPointReset(e) {
-      console.log('handelPointReset()', e);
+      //console.log('handelPointReset()', e);
       if (!this.loaded) return;
       this.resetSkillCost();
     },

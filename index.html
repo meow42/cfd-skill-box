@@ -21,10 +21,8 @@
                 <h2 style="text-align:center; line-height:30px; color:#886600; font-size:16px; font-weight:bold;">
                   <select name="race" id="rslect" v-model="race" @change="changeRace(race)" class="race-select">
                     <option key="a" value="a">{{ raceName['a'] }}</option>
-                    <!--
                     <option key="t" value="t">{{ raceName['t'] }}</option>
-                    <option key="s" value="s">{{ raceName['s'] }}</option>
-                    -->
+                    <!--<option key="s" value="s">{{ raceName['s'] }}</option>-->
                   </select>
                   技能加点模拟工具</h2>
               </th>
@@ -475,7 +473,10 @@
                 <skill id="s21">
                   <arrow need="s21" tar1="s22"></arrow>
                 </skill>
-                <skill id="s22"></skill>
+                <skill id="s22">
+                  <arrow need="s22" tar1="s54"></arrow>
+                </skill>
+                <skill id="s54"></skill>
               </div>
               <div name="c4" style="float: left;">
                 <skill id="s23">
@@ -548,7 +549,10 @@
                 <skill id="s43">
                   <arrow need="s43" tar1="s44"></arrow>
                 </skill>
-                <skill id="s44"></skill>
+                <skill id="s44">
+                  <arrow need="s44" tar1="s55"></arrow>
+                </skill>
+                <skill id="s55"></skill>
               </div>
               <div name="c4" style="float: left;">
                 <skill id="s45">
@@ -578,6 +582,71 @@
                 <arrow need="s52" tar1="s53"></arrow>
               </skill>
               <skill id="s53"></skill>
+            </div>
+          </div>
+          <div class="page" v-if="activeTab === 3">
+            <div name="c1">
+              <arrow need="s58" tar1="s59" type="lleft"></arrow>
+              <skill id="s59"></skill>
+            </div>
+            <div name="c2">
+              <skill id="s58">
+                <arrow need="s58" tar1="s60"></arrow>
+              </skill>
+              <skill id="s60">
+                <arrow need="s60" tar1="s61"></arrow>
+              </skill>
+              <skill id="s61">
+                <arrow need="s61" tar1="s62"></arrow>
+              </skill>
+              <skill id="s62">
+                <arrow need="s62" tar1="s63"></arrow>
+              </skill>
+              <skill id="s63"></skill>
+            </div>
+            <div name="c34">
+              <arrow need="s58" tar1="s64" type="right"></arrow>
+              <div name="c3" style="float: left; margin-right: 4px;">
+                <skill id="s64">
+                  <arrow need="s64" tar1="s65"></arrow>
+                </skill>
+                <skill id="s65">
+                  <arrow need="s65" tar1="s66"></arrow>
+                </skill>
+                <skill id="s66">
+                  <arrow need="s66" tar1="s67"></arrow>
+                </skill>
+                <skill id="s67">
+                  <arrow need="s67" tar1="s56"></arrow>
+                </skill>
+                <skill id="s56"></skill>
+              </div>
+              <div name="c4" style="float: left; width: 63px;"></div>
+            </div>
+            <div name="c5">
+              <skill id="s68">
+                <arrow need="s68" tar1="s69"></arrow>
+              </skill>
+              <skill id="s69">
+                <arrow need="s69" tar1="s70"></arrow>
+              </skill>
+              <skill id="s70">
+                <arrow need="s70" tar1="s71"></arrow>
+              </skill>
+              <skill id="s71"></skill>
+            </div>
+            <div name="c6">
+              <arrow need="s68" tar1="s72" type="right"></arrow>
+              <skill id="s72">
+                <arrow need="s72" tar1="s73"></arrow>
+              </skill>
+              <skill id="s73">
+                <arrow need="s73" tar1="s74"></arrow>
+              </skill>
+              <skill id="s74">
+                <arrow need="s74" tar1="s75"></arrow>
+              </skill>
+              <skill id="s75"></skill>
             </div>
           </div>
         </div>
@@ -671,17 +740,20 @@
           <div>
             <skill id="s1"></skill>
             <skill id="s2"></skill>
-            <skill id="s3"></skill>
           </div>
           <div>
             <skill id="s4"></skill>
             <skill id="s5"></skill>
             <skill id="s6"></skill>
             <skill id="s7"></skill>
+            <skill id="s57"></skill>
+            <skill id="s3"></skill>
           </div>
           <div>
             <skill id="s8"></skill>
-            <skill id="s9"></skill>
+            <skill id="s9">
+              <arrow need="s9" tar1="s10"></arrow>
+            </skill>
             <skill id="s10">
               <arrow need="s10" tar1="s11"></arrow>
             </skill>
