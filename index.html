@@ -83,7 +83,7 @@
                   :style="{backgroundImage: `url(img/${race}${index}.png)`}"
                   :class="{ tab_w : (item[race] === '觉醒'), 
                             gray99 : (index !== activeTab) }">
-                  <div class="tab1_cnt" v-if="item[race] !== '觉醒'">{{ getTypePoint(index) }}</div>
+                  <div class="tab1_cnt" v-if="item[race] !== '觉醒'">{{ getTypePoint(item[race]) }}</div>
                 </div>
                 <div class="tab" v-show="item[race] === '无'"></div>
               </td>
@@ -836,7 +836,7 @@
               注意事项
             </div>
             <div>
-              <p>1. 觉醒后涉及的技能等级上限未精准对应，目前是默认觉醒后技能全部+3，请自行对照。</p>
+              <p>1. 三次觉醒后涉及的技能等级上限直接+3，没有根据等级判定+1/+2的情况。（懒得做了）</p>
               <p>2. 技能数据对应的是开服的55级版本，可能存在数据不匹配当前版本的问题。</p>
               <p style="margin-top: 6px;">使用过程中发现BUG请在群里反馈给 @猫大海 ，感谢！
                 <a href="https://github.com/meow42/cfd-skill-box" target="_blank" style="margin-left: 260px;">[GitHub]</a>

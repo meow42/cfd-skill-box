@@ -323,6 +323,7 @@ class SkillData {
   need = null;  // 前置技能对象 SkillData
   nexts = [];   // 后置技能对象 SkillData
   type = "";    // 种类  共通 觉醒  攻击 射击 防御  火焰 冰霜 光电 自然  刺杀 诅咒 忍者
+  statup = ""   // 所属技能系，用于判断三次觉醒技能提供的等级上限提升
   getLeftPoint = () => { return 233; }; // 用于接收总剩余点数方法
   constructor(payload) {
     Object.assign(this, payload);
@@ -351,20 +352,19 @@ class SkillData {
     return result;
   }
   /** 获取等级数组中当前等级的数据 */
-  getN(key) {
-    let _n = this.n[Math.max(this.lv - 1, 0)];
+  getN(key, lv = this.lv) {
+    let _n = this.n[Math.max(lv - 1, 0)];
     if (!key) return _n;
     if (!_n) return null;
     return _n[key];
   }
   /** 获取技能是否激活的状态 */
-  isActive(pc_level) {
-    pc_level = pc_level || 4;
+  isActive(sim_pc_level, lv = this.lv) {
+    sim_pc_level = sim_pc_level || 4;
     let flag = true;
     // 判断角色等级
-    if (pc_level && this.n[0]) {
-      if (pc_level < this.n[0]['cl']) flag = false;
-    }
+    //console.log(sim_pc_level, this.getN('cl', lv + 1))
+    if (sim_pc_level < this.getN('cl', lv + 1)) flag = false;
     // 判断前置技能的等级
     if (this.need) {
       if (this.need.lv < this.needl) flag = false;
@@ -391,9 +391,11 @@ class SkillData {
   }
   /** 点数运算 */
   add(n) {
-    // 判断是否超出可加点上限
+    // 判断是否超出全局可加点上限
     let _cost = n > 0 ? Math.min(n, this.getLeftPoint()) : n;
     _cost += this.cost;
+    // 判断是否超出角色等级上限
+
     if (_cost < 0 || _cost > this.max - this.init) return;
     this.cost = _cost;
     this.setNextsCost();
@@ -402,8 +404,15 @@ class SkillData {
     let _lv = Math.min(Math.max(n, 0), this.max)
     this.add(_lv - this.lv)
   }
-  toMax() {
-    this.add(this.max - this.lv);
+  toMax(sim_pc_level = 0) {
+    let i = this.max - this.lv;
+    for (; i > 0; i--) {
+      if (this.isActive(sim_pc_level, i - 1)) {
+        this.add(i);
+        break
+      }
+    }
+    //console.log(i, sim_pc_level)
     //this.cost = this.max - this.init;
   }
   toMin() {
@@ -429,6 +438,7 @@ class SkillData {
     this.needl = c[7] - 0;
     this.needt = c[8];
     this.text = c[9];
+    this.statup = c[10].trim();
   }
   /** 解析并添加每个等级的描述数据 */
   addLevelText(c) {
@@ -468,17 +478,17 @@ var app = new Vue({
     skills: [], // 技能数据
     wakeupList: [], // 觉醒技能列表
     wakeups: [ // 觉醒数据
-      { id: '0', label: '未觉醒', skill: '', a: '', s: '', t: '' },
-      { id: '1', label: '1次觉醒', skill: 'w1,w2', a: '近战机体', s: '元素魔法师', t: '刺客' },
-      { id: '11', label: '┣2次觉醒', skill: 'w3,w4', a: '双手机体', s: '火焰法师', t: '迅捷刺客' },
-      { id: '111', label: '┃┗3次觉醒', skill: 'w5,w6', a: '战争机体', s: '火焰魔导士', t: '迅捷杀手' },
-      { id: '12', label: '┗2次觉醒', skill: 'w7,w8', a: '单手机体', s: '冰霜法师', t: '利爪刺客' },
-      { id: '121', label: '\xa0\xa0┗3次觉醒', skill: 'w9,w10', a: '防御机体', s: '冰霜魔导士', t: '利爪杀手' },
-      { id: '2', label: '1次觉醒', skill: 'w11,w12', a: '射击机体', s: '祈祷者', t: '诅咒者' },
-      { id: '21', label: '┣2次觉醒', skill: 'w13,w14', a: '迅捷机体', s: '神圣法师', t: '恶魔术士' },
-      { id: '211', label: '┃┗3次觉醒', skill: 'w15,w16', a: '狙击机体', s: '神圣召唤者', t: '通灵师' },
-      { id: '22', label: '┗2次觉醒', skill: 'w17,w18', a: '爆破机体', s: '牧师', t: '黑暗术士' },
-      { id: '221', label: '\xa0\xa0┗3次觉醒', skill: 'w19,w20', a: '大炮武器', s: '高阶祭司', t: '暗语师' },
+      { id: '0', label: '未觉醒', skill: '', a: '', s: '', t: '', statups: '' },
+      { id: '1', label: '1次觉醒', skill: 'w1,w2', a: '近战机体', s: '元素魔法师', t: '刺客', statups: '' },
+      { id: '11', label: '┣2次觉醒', skill: 'w3,w4', a: '双手机体', s: '火焰法师', t: '迅捷刺客', statups: '' },
+      { id: '111', label: '┃┗3次觉醒', skill: 'w5,w6', a: '战争机体', s: '火焰魔导士', t: '迅捷杀手', statups: '近战, 体术, 火焰' },
+      { id: '12', label: '┗2次觉醒', skill: 'w7,w8', a: '单手机体', s: '冰霜法师', t: '利爪刺客', statups: '' },
+      { id: '121', label: '\xa0\xa0┗3次觉醒', skill: 'w9,w10', a: '防御机体', s: '冰霜魔导士', t: '利爪杀手', statups: '近战, 体术, 冰霜' },
+      { id: '2', label: '1次觉醒', skill: 'w11,w12', a: '射击机体', s: '祈祷者', t: '诅咒者', statups: '' },
+      { id: '21', label: '┣2次觉醒', skill: 'w13,w14', a: '迅捷机体', s: '神圣法师', t: '恶魔术士', statups: '' },
+      { id: '211', label: '┃┗3次觉醒', skill: 'w15,w16', a: '狙击机体', s: '神圣召唤者', t: '通灵师', statups: '射击, 咒术, 光自' },
+      { id: '22', label: '┗2次觉醒', skill: 'w17,w18', a: '爆破机体', s: '牧师', t: '黑暗术士', statups: '' },
+      { id: '221', label: '\xa0\xa0┗3次觉醒', skill: 'w19,w20', a: '大炮武器', s: '高阶祭司', t: '暗语师', statups: '射击, 咒术, 光自' },
     ],
   },
   computed: {
@@ -490,8 +500,15 @@ var app = new Vue({
   },
   created() { },
   mounted() {
+    const params = new URLSearchParams(window.location.search);
+    let _race = params.get('race');
+    if (['a', 't', 's'].includes(_race)) {
+      this.race = _race
+    }
+
     this.resetPointParam();
     this.loadData();
+    
     console.log('app.mounted() ', this);
   },
   watch: {
@@ -535,8 +552,15 @@ var app = new Vue({
     /** 更新技能点数 */
     updateSkillCost() {
       this.skills.map(item => {
-        // 觉醒导致的变更，暂时简单处理
-        if (this.sim_pc_wakeup.length > 2) {
+        // 觉醒导致的等级上限变更
+        let statups = "";
+        for (let i = 0; i < this.wakeups.length; i++) {
+          if (this.wakeups[i]["id"] === this.sim_pc_wakeup) {
+            statups = this.wakeups[i]["statups"];
+            break;
+          }
+        }
+        if (item["statup"] && statups.includes(item["statup"])) {
           item.wup = true
         } 
         else {

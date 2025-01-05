@@ -17,9 +17,9 @@
       @mouseleave="handelMouseleave"
     >
       <img src="img/skillicon.png" class="skill_icon"
-        :class="{'disable_icon' : (!isEnable || skill.lv == 0)}"
+        :class="{'disable_icon' : (skill.lv === 0)}"
         :style="skill.getIconStyle()"/>
-      <div :class="isEnable && skill.lv > 0 ? 'enable_tbox' : 'disable_tbox'">
+      <div :class="skill.lv > 0 ? 'enable_tbox' : 'disable_tbox'">
         <span class="lv">{{ skill["lv"] }}/{{ skill["max"] }}</span>
         <img
           class="plus"
@@ -62,7 +62,7 @@ module.exports = {
     handelClick(e) {
       if (!this.isEnable) return;
       if (e.ctrlKey) e.shiftKey ? this.skill.toMin() : this.skill.add(-1);
-      else e.shiftKey ? this.skill.toMax() : this.skill.add(1);
+      else e.shiftKey ? this.skill.toMax(this.$root.sim_pc_level) : this.skill.add(1);
       //console.log("handelClick()", this);
     },
     /** 监听右键点击 */
@@ -73,8 +73,8 @@ module.exports = {
       if (e.preventDefault) e.preventDefault();
       if (window.event) window.event.returnValue = false;
 
-      if (!this.isEnable) return;
-      if (e.ctrlKey) e.shiftKey ? this.skill.toMax() : this.skill.add(1);
+      //if (!this.isEnable) return;
+      if (e.ctrlKey) e.shiftKey ? this.skill.toMax(this.$root.sim_pc_level) : this.skill.add(1);
       else e.shiftKey ? this.skill.toMin() : this.skill.add(-1);
       //console.log("handelRightClick()", this);
     },
